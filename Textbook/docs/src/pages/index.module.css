@@ -1,0 +1,39 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background-color: #4caf50; /* Green background */
+  background-image: url('/img/ai-background.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style for the title and subtitle to ensure good contrast on green background */
+.hero__title {
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.hero__subtitle {
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}

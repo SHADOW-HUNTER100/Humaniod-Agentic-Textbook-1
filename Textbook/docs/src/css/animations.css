@@ -1,0 +1,183 @@
+/* Animations for non-hero elements */
+.animated-element {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.animated-element.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.animated-element.delay-2 {
+  animation-delay: 0.4s;
+}
+
+.animated-element.delay-3 {
+  animation-delay: 0.6s;
+}
+
+.animated-element.delay-4 {
+  animation-delay: 0.8s;
+}
+
+/* Fade in up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Text glow animation for non-hero elements */
+.text-glow {
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+  to { text-shadow: 2px 2px 20px rgba(255,255,255,0.5); }
+}
+
+/* Float animation */
+.float-element {
+  animation: float 3s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-10px); }
+}
+
+/* Pulse animation */
+.pulse-element {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* Button Animation */
+.button--secondary {
+  background: rgba(255,255,255,0.2) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.3) !important;
+  color: white !important;
+  transition: all 0.3s ease;
+  transform: scale(1);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.button--secondary:hover {
+  background: rgba(255,255,255,0.3) !important;
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* Floating particles effect */
+.heroBanner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 2px, transparent 2px),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 2px, transparent 2px),
+    radial-gradient(circle at 40% 80%, rgba(255,255,255,0.1) 3px, transparent 3px);
+  background-size: 100px 100px, 150px 150px, 200px 200px;
+  animation: float 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-100%) translateX(-100%); }
+}
+
+/* Smooth page transitions */
+.docusaurus-wrapper {
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Feature cards animations */
+.feature-card {
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideIn 0.6s ease-out forwards;
+}
+
+.feature-card.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.feature-card:nth-child(1) { animation-delay: 0.2s; }
+.feature-card:nth-child(2) { animation-delay: 0.4s; }
+.feature-card:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animated container */
+.container.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Navigation fade in */
+.navbar {
+  animation: fadeInDown 0.8s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero__title {
+    font-size: 2.5rem !important;
+  }
+
+  .hero__subtitle {
+    font-size: 1.2rem !important;
+  }
+
+  .heroBanner {
+    padding: 2rem 0;
+  }
+}

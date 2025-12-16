@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-docusaurus@latest docs classic)",
+      "Bash(npm install)",
+      "Bash(npm run start)",
+      "Bash(test -f \"D:\\Hackhton 1.3\\humaniod-agentic-book\\docs\\docs\\physical-ai\\concepts.md\")",
+      "Bash(test -f \"D:\\Hackhton 1.3\\humaniod-agentic-book\\docs\\docs\\ros2\\integration.md\")",
+      "Bash(test -d \"D:\\Hackhton 1.3\\humaniod-agentic-book\\docs\\docs\\ros2\")",
+      "Bash(test -f \"D:\\Hackhton 1.3\\humaniod-agentic-book\\docs\\docs\\intro.md\")",
+      "Bash(dir \"D:\\Hackthon 1.3\\humaniod-agentic-book\\docs\\docs\\physical-ai\")",
+      "Bash(git push -u origin master)",
+      "Bash(git remote set-url origin https://github.com/SHADOW-HUNTER100/humaniod-agentic-textbook.git)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
