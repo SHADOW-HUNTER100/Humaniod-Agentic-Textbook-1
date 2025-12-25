@@ -1,4 +1,5 @@
 import React, { createContext, useContext, ReactNode, useEffect } from 'react';
+import { storage } from '../utils/storageUtils';
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -30,16 +31,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setIsClient(true);
 
     // Load authentication status from localStorage after component mounts (client-side only)
-    if (typeof window !== 'undefined') {
-      const storedAuthStatus = localStorage.getItem('isAuthenticated');
+    const storedAuthStatus = storage.getItem('isAuthenticated');
+    if (storedAuthStatus) {
       setIsAuthenticated(storedAuthStatus === 'true');
     }
   }, []);
 
   useEffect(() => {
     // Update localStorage when authentication status changes (client-side only)
-    if (isClient && typeof window !== 'undefined') {
-      localStorage.setItem('isAuthenticated', isAuthenticated.toString());
+    if (isClient) {
+      storage.setItem('isAuthenticated', isAuthenticated.toString());
     }
   }, [isAuthenticated, isClient]);
 
