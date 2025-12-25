@@ -14,7 +14,8 @@
       "Bash(powershell \"Get-ChildItem -Path . -Filter package*.json -Recurse\")",
       "Bash(powershell \"Get-ChildItem -Path scripts -Recurse\")",
       "Bash(powershell \".specify/scripts/powershell/check-prerequisites.ps1\" -Json -RequireTasks -IncludeTasks)",
-      "Bash(npm start)"
+      "Bash(npm start)",
+      "Bash(npm run build)"
     ],
     "deny": [],
     "ask": []

@@ -23,13 +23,19 @@ interface AuthProviderProps {
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    // Check if user is authenticated on initial load
-    return localStorage.getItem('isAuthenticated') === 'true';
+    // Check if we're in the browser before accessing localStorage
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('isAuthenticated') === 'true';
+    }
+    // Default to false on the server
+    return false;
   });
 
   useEffect(() => {
-    // Update localStorage when authentication status changes
-    localStorage.setItem('isAuthenticated', isAuthenticated.toString());
+    // Only update localStorage in the browser
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('isAuthenticated', isAuthenticated.toString());
+    }
   }, [isAuthenticated]);
 
   const login = () => {
