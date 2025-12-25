@@ -22,21 +22,24 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    // Check if we're in the browser before accessing localStorage
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('isAuthenticated') === 'true';
-    }
-    // Default to false on the server
-    return false;
-  });
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false); // Default to false during SSR
+  const [isClient, setIsClient] = useState<boolean>(false);
+
+  useEffect(() => {
+    // Set isClient to true on mount (client-side only)
+    setIsClient(true);
+
+    // Load authentication status from localStorage after component mounts
+    const storedAuthStatus = localStorage.getItem('isAuthenticated');
+    setIsAuthenticated(storedAuthStatus === 'true');
+  }, []);
 
   useEffect(() => {
     // Only update localStorage in the browser
-    if (typeof window !== 'undefined') {
+    if (isClient) {
       localStorage.setItem('isAuthenticated', isAuthenticated.toString());
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, isClient]);
 
   const login = () => {
     setIsAuthenticated(true);
