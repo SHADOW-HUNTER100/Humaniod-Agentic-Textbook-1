@@ -7,11 +7,11 @@ import styles from './styles.module.css';
 export default function NavbarWrapper(props) {
   const location = useLocation();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
-  // Check authentication status from localStorage on mount
+  // Set isClient to true on mount (client-side only)
   useEffect(() => {
-    const authStatus = localStorage.getItem('isAuthenticated') === 'true';
-    setIsAuthenticated(authStatus);
+    setIsClient(true);
   }, []);
 
   // Only show auth buttons on non-auth pages
@@ -20,8 +20,40 @@ export default function NavbarWrapper(props) {
   // Prepare navbar items based on authentication status
   let navbarItems = props.items ? [...props.items] : [];
 
-  if (!isAuthPage && !isAuthenticated) {
-    // Add sign in and sign up buttons for unauthenticated users
+  // Only show auth buttons on client side, default to showing login buttons during SSR
+  if (isClient) {
+    if (!isAuthPage && !isAuthenticated) {
+      // Add sign in and sign up buttons for unauthenticated users
+      navbarItems = [
+        ...(props.items || []),
+        {
+          to: '/sign-in',
+          label: 'Sign In',
+          position: 'right',
+        },
+        {
+          to: '/sign-up',
+          label: 'Sign Up',
+          position: 'right',
+        }
+      ];
+    } else if (isAuthenticated && !isAuthPage) {
+      // Add logout button for authenticated users
+      navbarItems = [
+        ...(props.items || []),
+        {
+          type: 'button',
+          label: 'Logout',
+          position: 'right',
+          onClick: () => {
+            setIsAuthenticated(false);
+            window.location.href = '/';
+          }
+        }
+      ];
+    }
+  } else if (!isAuthPage) {
+    // During SSR, default to showing login buttons
     navbarItems = [
       ...(props.items || []),
       {
@@ -33,21 +65,6 @@ export default function NavbarWrapper(props) {
         to: '/sign-up',
         label: 'Sign Up',
         position: 'right',
-      }
-    ];
-  } else if (isAuthenticated && !isAuthPage) {
-    // Add logout button for authenticated users
-    navbarItems = [
-      ...(props.items || []),
-      {
-        type: 'button',
-        label: 'Logout',
-        position: 'right',
-        onClick: () => {
-          localStorage.setItem('isAuthenticated', 'false');
-          setIsAuthenticated(false);
-          window.location.href = '/';
-        }
       }
     ];
   }

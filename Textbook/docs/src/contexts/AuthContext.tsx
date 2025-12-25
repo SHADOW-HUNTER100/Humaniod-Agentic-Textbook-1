@@ -1,5 +1,4 @@
 import React, { createContext, useContext, ReactNode, useEffect } from 'react';
-import { useLocalStorage } from '../hooks/useLocalStorage';
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -23,26 +22,26 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [storedAuthStatus, setStoredAuthStatus] = useLocalStorage('isAuthenticated', 'false');
-  const [isAuthenticated, setIsAuthenticated] = React.useState<boolean>(() => storedAuthStatus === 'true');
+  const [isAuthenticated, setIsAuthenticated] = React.useState<boolean>(false); // Default to false during SSR
   const [isClient, setIsClient] = React.useState<boolean>(false);
 
   useEffect(() => {
     // Set isClient to true on mount (client-side only)
     setIsClient(true);
+
+    // Load authentication status from localStorage after component mounts (client-side only)
+    if (typeof window !== 'undefined') {
+      const storedAuthStatus = localStorage.getItem('isAuthenticated');
+      setIsAuthenticated(storedAuthStatus === 'true');
+    }
   }, []);
 
   useEffect(() => {
-    // Update state when localStorage changes
-    setIsAuthenticated(storedAuthStatus === 'true');
-  }, [storedAuthStatus]);
-
-  useEffect(() => {
-    // Update localStorage when authentication status changes
-    if (isClient) {
-      setStoredAuthStatus(isAuthenticated.toString());
+    // Update localStorage when authentication status changes (client-side only)
+    if (isClient && typeof window !== 'undefined') {
+      localStorage.setItem('isAuthenticated', isAuthenticated.toString());
     }
-  }, [isAuthenticated, isClient, setStoredAuthStatus]);
+  }, [isAuthenticated, isClient]);
 
   const login = () => {
     setIsAuthenticated(true);
