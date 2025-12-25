@@ -3,6 +3,7 @@ import OriginalNavbar from '@theme-original/Navbar';
 import {useLocation} from '@docusaurus/router';
 import clsx from 'clsx';
 import styles from './styles.module.css';
+import { storage } from '../../utils/storageUtils';
 
 export default function NavbarWrapper(props) {
   const location = useLocation();
@@ -12,6 +13,12 @@ export default function NavbarWrapper(props) {
   // Set isClient to true on mount (client-side only)
   useEffect(() => {
     setIsClient(true);
+
+    // Load authentication status from localStorage after component mounts (client-side only)
+    const storedAuthStatus = storage.getItem('isAuthenticated');
+    if (storedAuthStatus) {
+      setIsAuthenticated(storedAuthStatus === 'true');
+    }
   }, []);
 
   // Only show auth buttons on non-auth pages
@@ -46,6 +53,7 @@ export default function NavbarWrapper(props) {
           label: 'Logout',
           position: 'right',
           onClick: () => {
+            storage.setItem('isAuthenticated', 'false');
             setIsAuthenticated(false);
             window.location.href = '/';
           }
