@@ -4,18 +4,19 @@
   align-items: center;
   min-height: 80vh;
   padding: 2rem 1rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: #000000;
 }
 
 .authCard {
   width: 100%;
   max-width: 420px;
-  background: white;
+  background: #1e293b;
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   padding: 2.5rem;
   position: relative;
   overflow: hidden;
+  color: white;
 }
 
 .authCard::before {
@@ -25,7 +26,7 @@
   left: 0;
   right: 0;
   height: 6px;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
 }
 
 .authHeader {
@@ -36,12 +37,12 @@
 .authHeader h2 {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #1f2937;
+  color: white;
   margin-bottom: 0.5rem;
 }
 
 .authHeader p {
-  color: #6b7280;
+  color: #cbd5e1;
   font-size: 0.95rem;
 }
 
@@ -59,22 +60,24 @@
 
 .inputGroup label {
   font-weight: 500;
-  color: #374151;
+  color: #e2e8f0;
   font-size: 0.9rem;
 }
 
 .inputGroup input {
   padding: 0.875rem 1rem;
-  border: 2px solid #e5e7eb;
+  border: 2px solid #334155;
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: #0f172a;
+  color: white;
 }
 
 .inputGroup input:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
 }
 
 .formOptions {
@@ -89,7 +92,7 @@
   align-items: center;
   cursor: pointer;
   user-select: none;
-  color: #374151;
+  color: #e2e8f0;
   font-size: 0.875rem;
 }
 
@@ -102,15 +105,15 @@
 .checkmark {
   height: 18px;
   width: 18px;
-  background-color: #eee;
-  border: 2px solid #d1d5db;
+  background-color: #0f172a;
+  border: 2px solid #475569;
   border-radius: 4px;
   margin-right: 0.5rem;
   transition: all 0.2s ease;
 }
 
 .checkboxContainer:hover input ~ .checkmark {
-  background-color: #f3f4f6;
+  background-color: #1e293b;
 }
 
 .checkboxContainer input:checked ~ .checkmark {
@@ -139,14 +142,14 @@
 }
 
 .forgotPassword {
-  color: #3b82f6;
+  color: #60a5fa;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
 .forgotPassword:hover {
-  color: #2563eb;
+  color: #3b82f6;
   text-decoration: underline;
 }
 
@@ -165,13 +168,13 @@
 
 .authButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
 }
 
 .authFooter {
   text-align: center;
   margin: 1.5rem 0;
-  color: #6b7280;
+  color: #cbd5e1;
   font-size: 0.9rem;
 }
 
@@ -182,7 +185,7 @@
 .switchLink {
   background: none;
   border: none;
-  color: #3b82f6;
+  color: #60a5fa;
   text-decoration: none;
   font-weight: 600;
   cursor: pointer;
@@ -193,13 +196,14 @@
 
 .switchLink:hover {
   text-decoration: underline;
+  color: #93c5fd;
 }
 
 .divider {
   display: flex;
   align-items: center;
   margin: 1.5rem 0;
-  color: #9ca3af;
+  color: #94a3b8;
   font-size: 0.875rem;
 }
 
@@ -207,7 +211,7 @@
 .divider::after {
   content: '';
   flex: 1;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #475569;
 }
 
 .divider span {
