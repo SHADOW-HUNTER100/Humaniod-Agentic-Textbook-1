@@ -15,15 +15,15 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://physical-and-humaniod-robotics-.vercel.app', // Vercel deployment URL
+  url: 'https://humaniod-agentic-textbook-1.vercel.app', // Vercel deployment URL
   // Set the /<baseUrl>/ pathname under which your site is served
   // For Vercel deployment, use '/' for root or adjust as needed
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'humanod-agents', // Usually your GitHub org/user name.
-  projectName: 'humanod-agents-book', // Usually your repo name.
+  organizationName: 'SHADOW-HUNTER100', // Usually your GitHub org/user name.
+  projectName: 'Humaniod-Agentic-Textbook-1', // Usually your repo name.
 
   onBrokenLinks: 'throw',
 
@@ -74,7 +74,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/SHADOW-HUNTER100/Humaniod-Agentic-Textbook-1/tree/main/Textbook/docs',
         },
         blog: {
           showReadingTime: true,
@@ -85,7 +85,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/SHADOW-HUNTER100/Humaniod-Agentic-Textbook-1/tree/main/Textbook/docs',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -136,7 +136,7 @@ const config: Config = {
           label: 'Assessments',
         },
         {
-          href: 'https://github.com/SHADOW-HUNTER100/physical-and-humaniod-robotics-',
+          href: 'https://github.com/SHADOW-HUNTER100/Humaniod-Agentic-Textbook-1',
           label: 'GitHub',
           position: 'right',
         },
@@ -188,7 +188,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub Repository',
-              href: 'https://github.com/humanod-agents/humanod-agents-book',
+              href: 'https://github.com/SHADOW-HUNTER100/Humaniod-Agentic-Textbook-1',
             },
             {
               label: 'NVIDIA Isaac',
