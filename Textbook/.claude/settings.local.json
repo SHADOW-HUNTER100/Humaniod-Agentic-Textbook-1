@@ -17,7 +17,14 @@
       "Bash(npm start)",
       "Bash(npm run build)",
       "Bash(npm run)",
-      "Bash(npx docusaurus start --port 3001)"
+      "Bash(npx docusaurus start --port 3001)",
+      "Bash(npx docusaurus start --port 3002)",
+      "Bash(findstr :300)",
+      "Bash(netstat -ano)",
+      "Bash(findstr :3003)",
+      "Bash(taskkill /PID 7464 /F)",
+      "Bash(npx docusaurus start --port 4000)",
+      "Bash(npx docusaurus start --port 5000)"
     ],
     "deny": [],
     "ask": []

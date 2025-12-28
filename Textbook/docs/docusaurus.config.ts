@@ -136,6 +136,16 @@ const config: Config = {
           label: 'Assessments',
         },
         {
+          to: '/sign-in',
+          label: 'Sign In',
+          position: 'right',
+        },
+        {
+          to: '/sign-up',
+          label: 'Sign Up',
+          position: 'right',
+        },
+        {
           href: 'https://github.com/SHADOW-HUNTER100/Humaniod-Agentic-Textbook-1',
           label: 'GitHub',
           position: 'right',
