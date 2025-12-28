@@ -21,43 +21,11 @@ function HomepageHeader() {
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          {isAuthenticated ? (
-            <>
-              <Link
-                className="button button--secondary button--lg"
-                to="/docs/intro">
-                LETS LEARN QUICKILY
-              </Link>
-              <Link
-                className="button button--primary button--lg margin-left--sm"
-                to="/"
-                onClick={(e) => {
-                  e.preventDefault();
-                  logout();
-                  window.location.href = '/';
-                }}>
-                Logout
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link
-                className="button button--secondary button--lg"
-                to="/docs/intro">
-                LETS LEARN QUICKILY
-              </Link>
-              <Link
-                className="button button--primary button--lg margin-left--sm"
-                to="/sign-up">
-                Sign Up
-              </Link>
-              <Link
-                className="button button--outline button--lg margin-left--sm"
-                to="/sign-in">
-                Sign In
-              </Link>
-            </>
-          )}
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/intro">
+            LETS LEARN QUICKILY
+          </Link>
         </div>
       </div>
     </header>
