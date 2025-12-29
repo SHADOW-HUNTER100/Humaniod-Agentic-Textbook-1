@@ -1,7 +1,7 @@
 import React from 'react';
 import OriginalNavbar from '@theme-original/Navbar';
 import {useLocation} from '@docusaurus/router';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext.no-localstorage';
 
 export default function NavbarWrapper(props) {
   const location = useLocation();

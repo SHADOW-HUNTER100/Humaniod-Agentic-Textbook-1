@@ -1,0 +1,29 @@
+{
+  "name": "humaniod-agentic-textbook",
+  "version": "1.0.0",
+  "description": "AI-Native Software Development Physical AI Humaniod Agentic Textbook",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "cd docs && npm start",
+    "docs": "cd docs && npm start",
+    "docs:build": "cd docs && npm run build",
+    "docs:serve": "cd docs && npm run serve",
+    "agent": "tsx run-agent.mjs",
+    "spec-agent": "tsx run-spec-agent.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ai",
+    "physical-ai",
+    "robotics",
+    "docusaurus",
+    "documentation"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

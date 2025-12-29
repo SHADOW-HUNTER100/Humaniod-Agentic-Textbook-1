@@ -24,7 +24,8 @@
       "Bash(findstr :3003)",
       "Bash(taskkill /PID 7464 /F)",
       "Bash(npx docusaurus start --port 4000)",
-      "Bash(npx docusaurus start --port 5000)"
+      "Bash(npx docusaurus start --port 5000)",
+      "Bash(find docs/src -name \"*.tsx\" -exec grep -l \"AuthProvider\" {} ;)"
     ],
     "deny": [],
     "ask": []

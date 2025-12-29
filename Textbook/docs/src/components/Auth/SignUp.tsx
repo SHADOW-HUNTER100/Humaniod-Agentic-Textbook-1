@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import {useLocation} from '@docusaurus/router';
-import {useAuth} from '../../contexts/AuthContext';
+import {useAuth} from '../../contexts/AuthContext.no-localstorage';
 import styles from './Auth.module.css';
 
 interface SignUpProps {

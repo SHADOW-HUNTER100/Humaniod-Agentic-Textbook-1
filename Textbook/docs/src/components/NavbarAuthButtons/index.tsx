@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext.no-localstorage';
 import Link from '@docusaurus/Link';
 
 const NavbarAuthButtons: React.FC = () => {

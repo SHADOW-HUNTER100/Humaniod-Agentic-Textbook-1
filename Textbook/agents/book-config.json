@@ -1,0 +1,25 @@
+{
+  "title": "AI-Native Physical Intelligence",
+  "author": "AI Assistant",
+  "targetDirectory": "docs/docs/physical-ai-book",
+  "chapters": [
+    {
+      "id": "chapter-1-introduction",
+      "title": "Introduction to AI-Native Systems",
+      "content": "## Understanding AI-Native Approaches\n\nAI-Native systems are designed from the ground up with artificial intelligence as a core component, rather than having AI added as an afterthought.\n\n### Key Principles\n\n1. Intelligence-first design\n2. Adaptive learning capabilities\n3. Real-world interaction\n4. Continuous improvement\n\n### Historical Context\n\nThe evolution from traditional programming to AI-Native approaches represents a paradigm shift...",
+      "position": 3
+    },
+    {
+      "id": "chapter-2-physical-ai",
+      "title": "Physical AI Fundamentals",
+      "content": "## Bridging Digital and Physical Worlds\n\nPhysical AI represents the convergence of artificial intelligence with physical systems and robotics.\n\n### Core Components\n\n- Sensory perception\n- Motor control\n- Environmental interaction\n- Real-time decision making",
+      "position": 4
+    },
+    {
+      "id": "chapter-3-applications",
+      "title": "Real-World Applications",
+      "content": "## Applications of Physical AI\n\nPhysical AI has transformative potential across multiple domains:\n\n- Manufacturing and automation\n- Healthcare robotics\n- Autonomous vehicles\n- Assistive technologies\n\n### Implementation Challenges\n\nDeploying physical AI systems requires addressing safety, reliability, and ethical considerations...",
+      "position": 5
+    }
+  ]
+}

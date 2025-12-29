@@ -1,0 +1,22 @@
+{
+  "specs": [
+    {
+      "id": 12,
+      "title": "machine-learning-model-integration",
+      "description": "This specification outlines the integration of machine learning models into the physical AI system to enhance decision-making capabilities and adaptability.",
+      "targetDirectory": "docs/docs/specs"
+    },
+    {
+      "id": 13,
+      "title": "computer-vision-enhancement",
+      "description": "This specification details the enhancement of computer vision capabilities in the humanoid robot system to improve environmental perception and interaction.",
+      "targetDirectory": "docs/docs/specs"
+    },
+    {
+      "id": 14,
+      "title": "autonomous-navigation-system",
+      "description": "This specification defines the implementation of an autonomous navigation system for humanoid robots to move safely and efficiently in complex environments.",
+      "targetDirectory": "docs/docs/specs"
+    }
+  ]
+}
