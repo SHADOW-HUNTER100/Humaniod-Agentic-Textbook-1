@@ -15,4 +15,4 @@ Physics simulation frameworks enable safe and efficient development of robotic s
 - Simulation-to-reality transfer techniques
 - Performance optimization for real-time simulation
 
-For detailed specification, see the [full specification](../specs/4-digital-twin-simulation/spec.md).
+For detailed implementation, see the relevant modules in this documentation.

@@ -22,4 +22,4 @@ This module is organized into the following chapters:
 - Multimodal perception (vision + language)
 - Natural interaction pipelines
 
-For detailed specification, see the [full specification](../specs/6-vla-integration/spec.md).
+For detailed implementation, see the corresponding chapters in this module.

@@ -15,4 +15,4 @@ Vision-Language-Action (VLA) systems integrate perception, language understandin
 - Cognitive planning from language to ROS actions
 - End-to-end learning for VLA systems
 
-For detailed specification, see the [full specification](../specs/6-vla-integration/spec.md).
+For detailed implementation, see the relevant modules in this documentation.

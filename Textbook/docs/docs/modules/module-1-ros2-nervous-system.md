@@ -23,4 +23,4 @@ By the end of this module, you will be able to:
 - Connect AI agents to robotic systems using rclpy
 - Understand the architecture of ROS 2-based robotic systems
 
-For detailed specification, see the [full specification](../specs/3-ros2-nervous-system/spec.md).
+For detailed implementation, see the corresponding chapters in this module.

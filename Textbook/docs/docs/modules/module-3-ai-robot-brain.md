@@ -22,4 +22,4 @@ This module is organized into the following chapters:
 - Nav2 for bipedal humanoid navigation
 - Synthetic data generation
 
-For detailed specification, see the [full specification](../specs/5-nvidia-isaac-brain/spec.md).
+For detailed implementation, see the corresponding chapters in this module.

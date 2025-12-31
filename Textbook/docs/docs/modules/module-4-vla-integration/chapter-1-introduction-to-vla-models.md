@@ -63,17 +63,177 @@ VLA models typically consist of three main components:
 - Requires large datasets for training
 - Challenging to interpret and debug
 
+**Example End-to-End Architecture:**
+```python
+import torch
+import torch.nn as nn
+import torchvision.models as models
+
+class EndToEndVLA(nn.Module):
+    def __init__(self, num_actions, vocab_size, hidden_dim=512):
+        super(EndToEndVLA, self).__init__()
+
+        # Vision encoder
+        self.vision_encoder = models.resnet18(pretrained=True)
+        self.vision_encoder.fc = nn.Linear(self.vision_encoder.fc.in_features, hidden_dim)
+
+        # Language encoder
+        self.embedding = nn.Embedding(vocab_size, hidden_dim)
+        self.lstm = nn.LSTM(hidden_dim, hidden_dim, batch_first=True)
+
+        # Fusion and action layers
+        self.fusion = nn.Linear(hidden_dim * 2, hidden_dim)
+        self.action_predictor = nn.Linear(hidden_dim, num_actions)
+        self.dropout = nn.Dropout(0.3)
+
+    def forward(self, image, text):
+        # Process visual input
+        visual_features = self.vision_encoder(image)
+
+        # Process language input
+        text_embeds = self.embedding(text)
+        lang_features, _ = self.lstm(text_embeds)
+        # Take the last output of the LSTM
+        lang_features = lang_features[:, -1, :]
+
+        # Fuse visual and language features
+        fused_features = torch.cat([visual_features, lang_features], dim=1)
+        fused_features = self.dropout(torch.relu(self.fusion(fused_features)))
+
+        # Predict actions
+        actions = self.action_predictor(fused_features)
+        return actions
+
+# Example usage
+model = EndToEndVLA(num_actions=10, vocab_size=10000)
+```
+
 ### Modular Approaches
 - Separate components for each modality
 - Integration through intermediate representations
 - Better interpretability and modularity
 - Easier to debug and improve components
 
+**Example Modular Architecture:**
+```python
+import torch
+import torch.nn as nn
+
+class VisionModule(nn.Module):
+    def __init__(self, output_dim=256):
+        super(VisionModule, self).__init__()
+        self.cnn = nn.Sequential(
+            nn.Conv2d(3, 32, 3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.Conv2d(32, 64, 3, padding=1),
+            nn.ReLU(),
+            nn.AdaptiveAvgPool2d((4, 4))
+        )
+        self.fc = nn.Linear(64 * 4 * 4, output_dim)
+
+    def forward(self, image):
+        features = self.cnn(image)
+        features = features.view(features.size(0), -1)
+        return self.fc(features)
+
+class LanguageModule(nn.Module):
+    def __init__(self, vocab_size, embed_dim=256, hidden_dim=256):
+        super(LanguageModule, self).__init__()
+        self.embedding = nn.Embedding(vocab_size, embed_dim)
+        self.lstm = nn.LSTM(embed_dim, hidden_dim, batch_first=True)
+
+    def forward(self, text):
+        embedded = self.embedding(text)
+        output, (hidden, _) = self.lstm(embedded)
+        # Use the last hidden state
+        return hidden[-1]
+
+class ActionModule(nn.Module):
+    def __init__(self, feature_dim, num_actions):
+        super(ActionModule, self).__init__()
+        self.predictor = nn.Sequential(
+            nn.Linear(feature_dim, 512),
+            nn.ReLU(),
+            nn.Dropout(0.3),
+            nn.Linear(512, num_actions)
+        )
+
+    def forward(self, features):
+        return self.predictor(features)
+
+class ModularVLA(nn.Module):
+    def __init__(self, vocab_size, num_actions):
+        super(ModularVLA, self).__init__()
+        self.vision_module = VisionModule()
+        self.language_module = LanguageModule(vocab_size)
+        self.action_module = ActionModule(512, num_actions)  # 256 + 256
+        self.fusion = nn.Linear(256 * 2, 512)
+
+    def forward(self, image, text):
+        vision_features = self.vision_module(image)
+        language_features = self.language_module(text)
+
+        # Combine features
+        combined = torch.cat([vision_features, language_features], dim=1)
+        fused = self.fusion(combined)
+
+        # Predict action
+        action = self.action_module(fused)
+        return action
+
+# Example usage
+modular_model = ModularVLA(vocab_size=10000, num_actions=10)
+```
+
 ### Foundation Model Approaches
 - Pre-trained large models adapted for robotics
 - Leveraging web-scale training data
 - Transfer learning for robotic tasks
 - Emergent capabilities from large-scale training
+
+**Example Foundation Model Integration:**
+```python
+import torch
+import torch.nn as nn
+from transformers import CLIPModel, CLIPProcessor
+import torchvision.models as models
+
+class FoundationVLA(nn.Module):
+    def __init__(self, base_model_name="openai/clip-vit-base-patch32", num_robot_actions=10):
+        super(FoundationVLA, self).__init__()
+
+        # Use a pre-trained foundation model (CLIP in this example)
+        self.clip_model = CLIPModel.from_pretrained(base_model_name)
+        self.processor = CLIPProcessor.from_pretrained(base_model_name)
+
+        # Robot-specific action head
+        self.action_head = nn.Sequential(
+            nn.Linear(512, 256),  # CLIP outputs 512-dim features
+            nn.ReLU(),
+            nn.Dropout(0.2),
+            nn.Linear(256, num_robot_actions)
+        )
+
+        # Freeze foundation model parameters initially
+        for param in self.clip_model.parameters():
+            param.requires_grad = False
+
+    def forward(self, image, text):
+        # Get embeddings from the foundation model
+        inputs = self.processor(text=text, images=image, return_tensors="pt", padding=True)
+        outputs = self.clip_model(**inputs)
+
+        # Get combined features
+        combined_features = outputs.logits_per_image  # or use text/image embeddings directly
+
+        # Predict robot actions using the specialized head
+        actions = self.action_head(combined_features)
+        return actions
+
+# Example usage
+foundation_model = FoundationVLA(num_robot_actions=10)
+```
 
 ## Notable VLA Systems
 - **RT-1 (Robotics Transformer 1)**: Google's transformer-based robot policy

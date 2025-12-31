@@ -23,4 +23,4 @@ By the end of this module, you will be able to:
 - Integrate Unity for high-fidelity visualization
 - Simulate various robot sensors for AI training
 
-For detailed specification, see the [full specification](../specs/4-digital-twin-simulation/spec.md).
+For detailed implementation, see the corresponding chapters in this module.

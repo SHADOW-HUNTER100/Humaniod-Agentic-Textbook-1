@@ -15,4 +15,4 @@ Humanoid robotics combines biomechanics, control theory, and AI to create human-
 - Biomechanical modeling and control
 - Applications in service and assistive robotics
 
-For detailed specification, see the [full specification](../specs/7-humanoid-robotics-dev/spec.md).
+For detailed implementation, see the relevant modules in this documentation.

@@ -15,4 +15,4 @@ Digital twins provide virtual replicas of physical systems for simulation, testi
 - Applications in training and testing
 - Benefits for safe development and deployment
 
-For detailed specification, see the [full specification](../specs/4-digital-twin-simulation/spec.md).
+For detailed implementation, see the relevant modules in this documentation.

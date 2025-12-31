@@ -15,4 +15,4 @@ Robot Operating System 2 (ROS 2) provides the middleware framework for building 
 - Message passing and communication patterns
 - Integration with AI frameworks and perception systems
 
-For detailed specification, see the [full specification](../specs/3-ros2-nervous-system/spec.md).
+For detailed implementation, see the relevant modules in this documentation.
